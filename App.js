@@ -1,20 +1,40 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react'
+import { StyleSheet, Text, View } from 'react-native'
+import { Link, NativeRouter, Route, Routes } from 'react-router-native'
+import Navigation from './layout/Navigation'
+import Home from './Page/Home'
+import ListBelanja from './Page/ListBelanja'
+import Pengeluaran from './Page/Pengeluaran'
 
-export default function App() {
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    <NativeRouter>
+        <View style={styles.container}>
+          <Routes>
+            <Route exact path="/" element={<Home/>} />
+            <Route path="/list" element={<ListBelanja/>} />
+            <Route path="/pengeluaran" element={<Pengeluaran/>} />
+          </Routes>
+          <Navigation/>
+        </View>
+    </NativeRouter>
+  )
 }
 
+export default App
+
 const styles = StyleSheet.create({
-  container: {
+  container:  {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    padding: 20,
+    
   },
-});
+  nav: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center'
+  },
+  navItem: {
+
+  }
+})
